@@ -1,0 +1,35 @@
+# One command starts the app and a web address with HTTPS:   docker compose up -d --build
+services:
+  app:
+    build: .
+    restart: unless-stopped        # starts again after a crash or a server restart
+    env_file: .env
+    environment:
+      DATA_DIR: /data
+      HOST: 0.0.0.0
+      PORT: "3000"
+      TRUST_PROXY: "1"
+      POSTER_SUPERVISED: "1"
+    volumes:
+      - ./data:/data               # accounts, WhatsApp links, settings and posts live here: back this folder up
+    expose:
+      - "3000"
+
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      DOMAIN: ${DOMAIN}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - app
+
+volumes:
+  caddy_data:
+  caddy_config:

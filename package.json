@@ -1,0 +1,25 @@
+{
+  "name": "whatsapp-auto-poster",
+  "version": "1.8.0",
+  "productName": "Postara",
+  "private": true,
+  "type": "module",
+  "description": "Reposts vendor products to your WhatsApp groups and status every day, with your profit added. Runs on a computer, a server, or an Android phone (Termux).",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@whiskeysockets/baileys": "7.0.0-rc14",
+    "express": "^4.21.0",
+    "jimp": "^1.6.1",
+    "pino": "^9.5.0",
+    "qrcode": "^1.5.4"
+  },
+  "optionalDependencies": {
+    "sharp": "^0.33.5"
+  }
+}

@@ -1,0 +1,5 @@
+# Gets a free HTTPS certificate for your domain and passes visitors to the app.
+{$DOMAIN} {
+	encode gzip
+	reverse_proxy app:3000
+}

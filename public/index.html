@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#081839">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="__BRAND__">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="format-detection" content="telephone=no">
+  <title>__BRAND__</title>
+  <link rel="manifest" href="manifest.webmanifest?v=__VERSION__" crossorigin="use-credentials">
+  <link rel="icon" href="icon.svg?v=__VERSION__" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png?v=__VERSION__">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <a class="mark-link" href="#home" aria-label="Home"><img class="mark" src="icon.svg?v=__VERSION__" alt=""></a>
+    <div class="brand"><h1 id="title">__BRAND__</h1><span class="tag">WhatsApp posting</span></div>
+    <span id="pill" class="pill pill-wait">Starting…</span>
+  </header>
+
+  <main id="view"></main>
+
+  <div id="savebar" class="savebar" hidden>
+    <span>Unsaved changes</span>
+    <button class="btn" id="discard" type="button">Undo</button>
+    <button class="btn primary" id="save" type="button">Save</button>
+  </div>
+
+  <nav class="tabbar" id="tabs" aria-label="Main">
+    <button data-tab="home" aria-current="page">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v9.5h13V10"/><path d="M10 19.5v-5h4v5"/></svg>
+      <span>Home</span>
+    </button>
+    <button data-tab="posts">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="4" width="17" height="16" rx="3"/><circle cx="9" cy="10" r="1.6"/><path d="m4 17 5-4.5 3.5 3L16 12l4 4"/></svg>
+      <span>Posts</span><b id="badge" class="badge" hidden></b>
+    </button>
+    <button data-tab="settings">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></svg>
+      <span>Settings</span>
+    </button>
+    <button data-tab="log">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h12M8 12h12M8 18h12"/><circle cx="4" cy="6" r="1"/><circle cx="4" cy="12" r="1"/><circle cx="4" cy="18" r="1"/></svg>
+      <span>Log</span>
+    </button>
+  </nav>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+  <div id="sheet" class="sheet" hidden>
+    <div class="backdrop" id="sheet-backdrop"></div>
+    <div class="panel" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
+      <h2 id="sheet-title"></h2>
+      <p id="sheet-body"></p>
+      <div class="actions">
+        <button class="btn" id="sheet-no" type="button">Cancel</button>
+        <button class="btn primary" id="sheet-yes" type="button"></button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
